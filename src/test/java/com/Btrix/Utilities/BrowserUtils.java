@@ -220,6 +220,7 @@ public class BrowserUtils {
      * @param timeout
      * @return
      */
+
     public static WebElement waitForClickablility(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -447,5 +448,9 @@ public class BrowserUtils {
     public static void waitForsStaleness(By by) {
         new WebDriverWait(com.Btrix.Utilities.Driver.getDriver(), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT"))).
                 until(ExpectedConditions.stalenessOf(com.Btrix.Utilities.Driver.getDriver().findElement(by)));
+    }
+    public static void waitForFrameAndSwitchToIt(WebElement frame){
+        new WebDriverWait(Driver.getDriver(), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT"))).
+                until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame));
     }
 }
